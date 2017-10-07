@@ -1,6 +1,6 @@
-# nuxt-sample
+# azurlane-calc
 
-> Nuxt.js project
+> Azurlane calculator
 
 ## Build Setup
 

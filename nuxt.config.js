@@ -3,7 +3,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'nuxt-sample',
+    title: 'Azurlane calculator',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -39,6 +39,6 @@ module.exports = {
   ** Router configuration
   */
   router: {
-    base: '/nuxt-sample/'
+    base: '/azurlane-calc/'
   }
 }
