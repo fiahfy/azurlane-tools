@@ -34,5 +34,11 @@ module.exports = {
         })
       }
     }
+  },
+  /*
+  ** Router configuration
+  */
+  router: {
+    base: '/nuxt-sample/'
   }
 }
