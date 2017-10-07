@@ -1,8 +1,31 @@
 <template>
   <div>
+    <mdc-toolbar title="test">
+      <nuxt-link slot="left" to="/">
+        <mdc-icon icon="menu" class="mdc-toolbar__icon--menu"/>
+      </nuxt-link>
+    </mdc-toolbar>
     <nuxt/>
   </div>
 </template>
+
+<script>
+import MdcIcon from '~/components/MdcIcon'
+import MdcToolbar from '~/components/MdcToolbar'
+
+export default {
+  components: { MdcIcon, MdcToolbar }
+}
+</script>
+
+<style>
+@import 'material-components-web/dist/material-components-web.css';
+@import 'material-design-icons/iconfont/material-icons.css';
+
+:root {
+    /* --mdc-theme-primary: red; */
+}
+</style>
 
 <style>
 html {
