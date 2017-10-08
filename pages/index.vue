@@ -7,10 +7,6 @@
       <h2 class="subtitle">
         Azurlane tools
       </h2>
-      <div class="links">
-        <nuxt-link to="/skill-exp-calc" class="button--green">Skill EXP Calculator</nuxt-link>
-        <a href="https://github.com/fiahfy/azurlane-tools" target="_blank" class="button--grey">GitHub</a>
-      </div>
     </div>
   </section>
 </template>
@@ -27,6 +23,7 @@ export default {
 
 <style>
 .container {
+  margin: 15px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -41,6 +38,7 @@ export default {
   font-size: 100px;
   color: #35495e;
   letter-spacing: 1px;
+  word-break: break-all;
 }
 
 .subtitle {

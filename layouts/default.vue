@@ -1,7 +1,18 @@
 <template>
   <div>
-    <mdc-temporary-drawer :open="open" @requestChange="requestChange"/>
-    <mdc-toolbar title="test" :fixed="true">
+    <mdc-temporary-drawer header="Azurlane tools" :open="open" @requestChange="requestChange">
+      <template slot>
+        <nuxt-link class="mdc-list-item mdc-temporary-drawer--selected" to="/skill-exp-calc">
+          <mdc-icon icon="star" class="material-icons mdc-list-item__start-detail" aria-hidden="true"/>Skill EXP calculator
+        </nuxt-link>
+        <mdc-list-divider/>
+        <a href="https://github.com/fiahfy/azurlane-tools" target="_blank" class="mdc-list-item">
+          <github-mark icon="github" class="material-icons mdc-list-item__start-detail"/>GitHub
+          <mdc-icon icon="open_in_new" class="material-icons mdc-list-item__end-detail" aria-hidden="true"/>
+        </a>
+      </template>
+    </mdc-temporary-drawer>
+    <mdc-toolbar :title="title" :fixed="true">
       <mdc-icon slot="left" icon="menu" class="mdc-toolbar__icon--menu" @click.native="click"/>
       <nuxt slot="main"/>
     </mdc-toolbar>
@@ -9,13 +20,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import GithubMark from '~/components/GithubMark'
 import MdcIcon from '~/components/MdcIcon'
+import MdcListDivider from '~/components/MdcListDivider'
 import MdcTemporaryDrawer from '~/components/MdcTemporaryDrawer'
 import MdcToolbar from '~/components/MdcToolbar'
 
 export default {
   components: {
+    GithubMark,
     MdcIcon,
+    MdcListDivider,
     MdcTemporaryDrawer,
     MdcToolbar
   },
@@ -24,12 +40,20 @@ export default {
       open: false
     }
   },
+  computed: mapState([
+    'title'
+  ]),
   methods: {
     click () {
       this.open = !this.open
     },
     requestChange (open) {
       this.open = open
+    }
+  },
+  watch: {
+    '$route' () {
+      this.open = false
     }
   }
 }
