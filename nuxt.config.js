@@ -43,5 +43,11 @@ module.exports = {
   */
   router: {
     base: publicPath
-  }
+  },
+  /*
+  ** Plugins
+  */
+  plugins: [
+    { src: '~plugins/ga.js', ssr: false }
+  ]
 }
