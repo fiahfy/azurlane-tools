@@ -25,7 +25,7 @@ export default {
     }
   },
   mounted () {
-    const {MDCTemporaryDrawer} = require('@material/drawer')
+    const { MDCTemporaryDrawer } = require('@material/drawer/dist/mdc.drawer')
     this.drawer = new MDCTemporaryDrawer(this.$el)
     this.$el.addEventListener('MDCTemporaryDrawer:open', () => {
       this.$emit('requestChange', true)
