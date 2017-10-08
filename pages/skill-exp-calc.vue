@@ -4,28 +4,28 @@
       <h2>Input</h2>
       <div>
         <mdc-form-field align="end">
-          <label for="level">Current Lv:</label>
           <select class="mdc-select" id="level" v-model="current">
             <option :key="l" :value="l" v-for="l in levels">{{ l }}</option>
           </select>
+          <label for="level">Current Lv:</label>
         </mdc-form-field>
       </div>
       <div>
         <mdc-form-field align="end">
-          <label for="level">Target Lv:</label>
           <select class="mdc-select" id="level" v-model="target">
             <option :key="l" :value="l" v-for="l in levels">{{ l }}</option>
           </select>
+          <label for="level">Target Lv:</label>
         </mdc-form-field>
       </div>
       <div>
         <mdc-form-field align="end">
-          <label for="textbook">Textbook:</label>
           <select class="mdc-select" id="textbook" v-model="textbookId">
             <option :key="t.id" :value="t.id" v-for="t in textbooks">
               {{ t.name }} ({{ t.exp }}exp)
             </option>
           </select>
+          <label for="textbook">Textbook:</label>
         </mdc-form-field>
       </div>
       <div>
