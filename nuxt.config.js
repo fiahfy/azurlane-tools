@@ -13,13 +13,14 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Azurlane tools' }
     ],
     link: [
-      { rel: 'mask-icon', color: 'black', href: publicPath + 'favicon.svg' }
+      { rel: 'icon', sizes: '192x192', href: publicPath + 'favicon.png' },
+      { rel: 'apple-touch-icon', sizes: '180x180', href: publicPath + 'apple-touch-icon.png' }
     ]
   },
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#2c999c' },
   /*
   ** Build configuration
   */
