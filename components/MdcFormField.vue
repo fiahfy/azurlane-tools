@@ -20,3 +20,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.mdc-form-field--align-end>label {
+  padding-left: 0;
+}
+</style>

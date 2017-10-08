@@ -6,7 +6,7 @@
           {{ header }}
         </div>
       </header>
-      <nav id="icon-with-text-demo" class="mdc-temporary-drawer__content mdc-list-group">
+      <nav class="mdc-temporary-drawer__content mdc-list-group">
         <slot/>
       </nav>
     </nav>

@@ -1,69 +1,106 @@
 <template>
   <section class="container">
     <section>
-      <h2>Input</h2>
-      <div>
-        <mdc-form-field align="end">
-          <label for="level">Current Lv:</label>
-          <select class="mdc-select" id="level" v-model="current">
-            <option :key="l" :value="l" v-for="l in levels">{{ l }}</option>
-          </select>
-        </mdc-form-field>
-      </div>
-      <div>
-        <mdc-form-field align="end">
-          <label for="level">Target Lv:</label>
-          <select class="mdc-select" id="level" v-model="target">
-            <option :key="l" :value="l" v-for="l in levels">{{ l }}</option>
-          </select>
-        </mdc-form-field>
-      </div>
-      <div>
-        <mdc-form-field align="end">
-          <label for="textbook">Textbook:</label>
-          <select class="mdc-select" id="textbook" v-model="textbookId">
-            <option :key="t.id" :value="t.id" v-for="t in textbooks">
-              {{ t.name }} ({{ t.exp }}exp)
-            </option>
-          </select>
-        </mdc-form-field>
-      </div>
-      <div>
-        <mdc-form-field>
-          <label/>
-          <mdc-checkbox id="bonus" v-model="bonus"/>
-          <label for="bonus">Bonus<small>(150%)</small></label>
-        </mdc-form-field>
-      </div>
+      <mdc-typography tag="h2" type="title">Input</mdc-typography>
+      <mdc-list twoLine dense>
+        <mdc-list-item>
+          <span class="mdc-list-item__text">
+            Current Level
+            <span class="mdc-list-item__text__secondary">
+              <mdc-select v-model="current">
+                <mdc-list-item
+                  role="option"
+                  tabindex="0"
+                  :aria-selected="l === current"
+                  :id="l"
+                  :key="l"
+                  v-for="l in levels"
+                >
+                  {{ l }}
+                </mdc-list-item>
+              </mdc-select>
+            </span>
+          </span>
+        </mdc-list-item>
+        <mdc-list-item>
+          <span class="mdc-list-item__text">
+            Target Level
+            <span class="mdc-list-item__text__secondary">
+              <mdc-select v-model="target">
+                <mdc-list-item
+                  role="option"
+                  tabindex="0"
+                  :aria-selected="l === target"
+                  :id="l"
+                  :key="l"
+                  v-for="l in levels"
+                >
+                  {{ l }}
+                </mdc-list-item>
+              </mdc-select>
+            </span>
+          </span>
+        </mdc-list-item>
+        <mdc-list-item>
+          <span class="mdc-list-item__text">
+            Textbook
+            <span class="mdc-list-item__text__secondary">
+              <mdc-select v-model="textbookId">
+                <mdc-list-item
+                  role="option"
+                  tabindex="0"
+                  :aria-selected="t.id === textbookId"
+                  :id="t.id"
+                  :key="t.id"
+                  v-for="t in textbooks"
+                >
+                  {{ t.name }}
+                </mdc-list-item>
+              </mdc-select>
+            </span>
+          </span>
+        </mdc-list-item>
+        <mdc-list-item>
+          <mdc-form-field align="end">
+            <mdc-checkbox id="bonus" v-model="bonus"/>
+            <label for="bonus">Bonus<small>(150%)</small></label>
+          </mdc-form-field>
+        </mdc-list-item>
+      </mdc-list>
     </section>
+
     <section>
-      <h2>Result</h2>
-      <div>
-        <mdc-form-field align="end">
-          <label>Total EXP: </label>
-          <span>{{ exp }}</span>
-        </mdc-form-field>
-      </div>
-      <div>
-        <mdc-form-field align="end">
-          <label>Total textbooks: </label>
-          <span>{{ number }}</span>
-        </mdc-form-field>
-      </div>
-      <div>
-        <mdc-form-field align="end">
-          <label>Total time: </label>
-          <span>{{ time }}</span>
-        </mdc-form-field>
-      </div>
+      <mdc-typography tag="h2" type="title">Result</mdc-typography>
+      <mdc-list twoLine dense>
+        <mdc-list-item>
+          <span class="mdc-list-item__text">
+            Total EXP
+            <span class="mdc-list-item__text__secondary">{{ exp }}</span>
+          </span>
+        </mdc-list-item>
+        <mdc-list-item>
+          <span class="mdc-list-item__text">
+            Total textbooks
+            <span class="mdc-list-item__text__secondary">{{ number }}</span>
+          </span>
+        </mdc-list-item>
+        <mdc-list-item>
+          <span class="mdc-list-item__text">
+            Total time
+            <span class="mdc-list-item__text__secondary">{{ time }}</span>
+          </span>
+        </mdc-list-item>
+      </mdc-list>
     </section>
+
     <section>
-      <h2>Reference</h2>
-      <ul>
-        <li>
-          <a href="http://azurlane.wikiru.jp/index.php?%B3%D8%B1%E0#p707f95f" target="_blank">Azurlane Wiki</a>
-        </li>
-      </ul>
+      <mdc-typography tag="h2" type="title">Reference</mdc-typography>
+      <mdc-list dense>
+        <mdc-list-item tag="a" href="http://azurlane.wikiru.jp/index.php?%B3%D8%B1%E0#p707f95f" target="_blank">
+          学園 - アズールレーン(アズレン)攻略 Wiki
+          <mdc-icon icon="open_in_new" class="mdc-list-item__end-detail" aria-hidden="true"/>
+        </mdc-list-item>
+      </mdc-list>
     </section>
   </section>
 </template>
@@ -71,6 +108,11 @@
 <script>
 import MdcCheckbox from '~/components/MdcCheckbox'
 import MdcFormField from '~/components/MdcFormField'
+import MdcIcon from '~/components/MdcIcon'
+import MdcList from '~/components/MdcList'
+import MdcListItem from '~/components/MdcListItem'
+import MdcSelect from '~/components/MdcSelect'
+import MdcTypography from '~/components/MdcTypography'
 
 const levels = Array.from(Array(10).keys()).map(i => i + 1)
 const textbooks = [
@@ -94,7 +136,12 @@ const exps = {
 export default {
   components: {
     MdcCheckbox,
-    MdcFormField
+    MdcFormField,
+    MdcIcon,
+    MdcList,
+    MdcListItem,
+    MdcSelect,
+    MdcTypography
   },
   asyncData ({ store }) {
     const title = 'Skill EXP calculator'
@@ -150,25 +197,13 @@ export default {
 
 <style scoped>
 .container {
-  padding: 15px;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 16px;
+  width: 100%;
 }
-h2 {
-  font-size: large;
-}
-section>div {
-  margin: 15px 0;
-}
-.mdc-select {
-  max-width: none;
-  padding-left: 15px;
-}
-label {
-  width: 128px;
-}
-label small {
-  margin-left: 5px;
-}
-span {
-  font-weight: bold;
+.container>section:first-child .mdc-list-item__text__secondary {
+  top: -5px;
+  position: relative;
 }
 </style>

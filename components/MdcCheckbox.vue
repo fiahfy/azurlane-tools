@@ -26,7 +26,7 @@
 </template>
 
 <script>
-// import { MDCCheckbox } from '@material/checkbox'
+import { MDCCheckbox } from '@material/checkbox/dist/mdc.checkbox'
 
 export default {
   props: {
@@ -38,7 +38,7 @@ export default {
     }
   },
   mounted () {
-    // MDCCheckbox.attachTo(document.querySelector('.mdc-checkbox'))
+    MDCCheckbox.attachTo(this.$el)
   },
   methods: {
     updateValue (e) {

@@ -49,8 +49,4 @@ export default {
   word-spacing: 5px;
   padding-bottom: 15px;
 }
-
-.links {
-  padding-top: 15px;
-}
 </style>
