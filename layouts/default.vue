@@ -1,20 +1,37 @@
 <template>
   <div>
-    <mdc-toolbar title="test">
-      <nuxt-link slot="left" to="/">
-        <mdc-icon icon="menu" class="mdc-toolbar__icon--menu"/>
-      </nuxt-link>
+    <mdc-temporary-drawer :open="open" @requestChange="requestChange"/>
+    <mdc-toolbar title="test" :fixed="true">
+      <mdc-icon slot="left" icon="menu" class="mdc-toolbar__icon--menu" @click.native="click"/>
+      <nuxt slot="main"/>
     </mdc-toolbar>
-    <nuxt/>
   </div>
 </template>
 
 <script>
 import MdcIcon from '~/components/MdcIcon'
+import MdcTemporaryDrawer from '~/components/MdcTemporaryDrawer'
 import MdcToolbar from '~/components/MdcToolbar'
 
 export default {
-  components: { MdcIcon, MdcToolbar }
+  components: {
+    MdcIcon,
+    MdcTemporaryDrawer,
+    MdcToolbar
+  },
+  data () {
+    return {
+      open: false
+    }
+  },
+  methods: {
+    click () {
+      this.open = !this.open
+    },
+    requestChange (open) {
+      this.open = open
+    }
+  }
 }
 </script>
 

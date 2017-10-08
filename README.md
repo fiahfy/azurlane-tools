@@ -1,6 +1,6 @@
-# azurlane-calc
+# azurlane-tools
 
-> Azurlane calculator
+> Azurlane tools
 
 ## Build Setup
 

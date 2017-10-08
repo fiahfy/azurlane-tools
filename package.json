@@ -1,7 +1,7 @@
 {
-  "name": "azurlane-calc",
+  "name": "azurlane-tools",
   "version": "1.0.0",
-  "description": "Azurlane calculator",
+  "description": "Azurlane tools",
   "author": "fiahfy <d.fiahfy@gmail.com>",
   "private": true,
   "scripts": {

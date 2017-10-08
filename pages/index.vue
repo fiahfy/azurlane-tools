@@ -2,14 +2,14 @@
   <section class="container">
     <div>
       <h1 class="title">
-        azurlane-calc
+        azurlane-tools
       </h1>
       <h2 class="subtitle">
-        Azurlane calculator
+        Azurlane tools
       </h2>
       <div class="links">
         <nuxt-link to="/skill-exp-calc" class="button--green">Skill EXP Calculator</nuxt-link>
-        <a href="https://github.com/fiahfy/azurlane-calc" target="_blank" class="button--grey">GitHub</a>
+        <a href="https://github.com/fiahfy/azurlane-tools" target="_blank" class="button--grey">GitHub</a>
       </div>
     </div>
   </section>

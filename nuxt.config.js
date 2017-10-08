@@ -1,15 +1,15 @@
-const publicPath = process.env.NODE_ENV === 'production' ? '/azurlane-calc/' : '/'
+const publicPath = process.env.NODE_ENV === 'production' ? '/azurlane-tools/' : '/'
 
 module.exports = {
   /*
   ** Headers of the page
   */
   head: {
-    title: 'azurlane-calc',
+    title: 'azurlane-tools',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Azurlane calculator' }
+      { hid: 'description', name: 'description', content: 'Azurlane tools' }
     ],
     link: [
       { rel: 'mask-icon', color: 'black', href: publicPath + 'favicon.svg' }
