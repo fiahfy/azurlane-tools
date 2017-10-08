@@ -2,19 +2,19 @@
   <div>
     <mdc-temporary-drawer header="Azurlane tools" :open="open" @requestChange="requestChange">
       <template slot>
-        <mdc-list-link to="/skill-exp-calc" class="mdc-temporary-drawer--selected">
+        <mdc-list-item tag="nuxt-link" to="/skill-exp-calc" class="mdc-temporary-drawer--selected">
           <mdc-icon icon="star" class="mdc-list-item__start-detail" aria-hidden="true"/>
           Skill EXP calculator
-        </mdc-list-link>
+        </mdc-list-item>
         <mdc-list-divider/>
-        <mdc-list-link to="https://github.com/fiahfy/azurlane-tools" target="_blank">
+        <mdc-list-item tag="a" href="https://github.com/fiahfy/azurlane-tools" target="_blank">
           <github-mark icon="github" class="mdc-list-item__start-detail" aria-hidden="true"/>
           GitHub
           <mdc-icon icon="open_in_new" class="mdc-list-item__end-detail" aria-hidden="true"/>
-        </mdc-list-link>
+        </mdc-list-item>
       </template>
     </mdc-temporary-drawer>
-    <mdc-toolbar :title="title" :fixed="true" @menuClick="menuClick">
+    <mdc-toolbar :title="title" fixed @menuClick="menuClick">
       <nuxt/>
     </mdc-toolbar>
   </div>
@@ -25,7 +25,7 @@ import { mapState } from 'vuex'
 import GithubMark from '~/components/GithubMark'
 import MdcIcon from '~/components/MdcIcon'
 import MdcListDivider from '~/components/MdcListDivider'
-import MdcListLink from '~/components/MdcListLink'
+import MdcListItem from '~/components/MdcListItem'
 import MdcTemporaryDrawer from '~/components/MdcTemporaryDrawer'
 import MdcToolbar from '~/components/MdcToolbar'
 
@@ -34,7 +34,7 @@ export default {
     GithubMark,
     MdcIcon,
     MdcListDivider,
-    MdcListLink,
+    MdcListItem,
     MdcTemporaryDrawer,
     MdcToolbar
   },
@@ -80,5 +80,9 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
 }
 </style>
