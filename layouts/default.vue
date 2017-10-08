@@ -3,12 +3,12 @@
     <mdc-temporary-drawer header="Azurlane tools" :open="open" @requestChange="requestChange">
       <template slot>
         <nuxt-link class="mdc-list-item mdc-temporary-drawer--selected" to="/skill-exp-calc">
-          <mdc-icon icon="star" class="material-icons mdc-list-item__start-detail" aria-hidden="true"/>Skill EXP calculator
+          <mdc-icon icon="star" class="mdc-list-item__start-detail" aria-hidden="true"/>Skill EXP calculator
         </nuxt-link>
         <mdc-list-divider/>
         <a href="https://github.com/fiahfy/azurlane-tools" target="_blank" class="mdc-list-item">
-          <github-mark icon="github" class="material-icons mdc-list-item__start-detail"/>GitHub
-          <mdc-icon icon="open_in_new" class="material-icons mdc-list-item__end-detail" aria-hidden="true"/>
+          <github-mark icon="github" class="mdc-list-item__start-detail"/>GitHub
+          <mdc-icon icon="open_in_new" class="mdc-list-item__end-detail" aria-hidden="true"/>
         </a>
       </template>
     </mdc-temporary-drawer>
@@ -64,7 +64,7 @@ export default {
 @import 'material-design-icons/iconfont/material-icons.css';
 
 :root {
-    /* --mdc-theme-primary: red; */
+  --mdc-theme-primary: #2c999c;
 }
 </style>
 
@@ -80,7 +80,12 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
 }
@@ -112,5 +117,5 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
-}
+} */
 </style>

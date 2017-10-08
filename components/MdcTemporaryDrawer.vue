@@ -6,7 +6,7 @@
           {{ header }}
         </div>
       </header>
-      <nav id="icon-with-text-demo" class="mdc-temporary-drawer__content mdc-list">
+      <nav id="icon-with-text-demo" class="mdc-temporary-drawer__content mdc-list-group">
         <slot/>
       </nav>
     </nav>
@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import { MDCTemporaryDrawer } from '@material/drawer/dist/mdc.drawer'
+
 export default {
   props: {
     header: {
@@ -25,7 +27,6 @@ export default {
     }
   },
   mounted () {
-    const { MDCTemporaryDrawer } = require('@material/drawer/dist/mdc.drawer')
     this.drawer = new MDCTemporaryDrawer(this.$el)
     this.$el.addEventListener('MDCTemporaryDrawer:open', () => {
       this.$emit('requestChange', true)

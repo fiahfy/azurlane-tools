@@ -6,9 +6,10 @@ module.exports = {
   */
   head: {
     title: 'Azurlane tools',
+    titleTemplate: '%s - Azurlane tools',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' },
       { hid: 'description', name: 'description', content: 'Azurlane tools' }
     ],
     link: [

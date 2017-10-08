@@ -12,16 +12,17 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
+  head () {
+    return {
+      title: 'Azurlane tools',
+      titleTemplate: null
+    }
   }
 }
 </script>
 
-<style>
+<style scoped>
 .container {
   margin: 15px;
   min-height: 100vh;
