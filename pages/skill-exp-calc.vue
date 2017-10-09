@@ -63,7 +63,7 @@
         <mdc-list-item>
           <mdc-form-field align="end">
             <mdc-checkbox id="bonus" v-model="bonus"/>
-            <label for="bonus">Bonus<small>(150%)</small></label>
+            <label for="bonus">Bonus <small>(150%)</small></label>
           </mdc-form-field>
         </mdc-list-item>
       </mdc-list>
@@ -113,25 +113,7 @@ import MdcList from '~/components/MdcList'
 import MdcListItem from '~/components/MdcListItem'
 import MdcSelect from '~/components/MdcSelect'
 import MdcTypography from '~/components/MdcTypography'
-
-const levels = Array.from(Array(10).keys()).map(i => i + 1)
-const textbooks = [
-  { id: 1, name: 'Tier 1', exp: 100, hour: 2 },
-  { id: 2, name: 'Tier 2', exp: 300, hour: 4 },
-  { id: 3, name: 'Tier 3', exp: 800, hour: 8 }
-]
-const exps = {
-  1: 0,
-  2: 100,
-  3: 200,
-  4: 400,
-  5: 800,
-  6: 1400,
-  7: 2200,
-  8: 3200,
-  9: 4400,
-  10: 5800
-}
+import { levels, textbooks, getExp, getTextbook } from '~/utils/skill'
 
 export default {
   components: {
@@ -165,15 +147,10 @@ export default {
   },
   computed: {
     exp () {
-      return levels.reduce((p, c) => {
-        if (c > this.current && c <= this.target) {
-          return p + exps[c]
-        }
-        return p
-      }, 0)
+      return getExp(this.current, this.target)
     },
     textbook () {
-      return textbooks.find((textbook) => textbook.id === this.textbookId) || {}
+      return getTextbook(this.textbookId) || {}
     },
     number () {
       let exp = this.textbook.exp
