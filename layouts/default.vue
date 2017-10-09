@@ -74,6 +74,7 @@ export default {
 <style>
 @import 'material-components-web/dist/material-components-web.css';
 @import 'material-design-icons/iconfont/material-icons.css';
+@import 'roboto-fontface/css/roboto/roboto-fontface.css';
 
 :root {
   --mdc-theme-primary: #3B8070;
