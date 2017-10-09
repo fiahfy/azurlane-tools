@@ -130,19 +130,19 @@ export default {
     store.commit('setTitle', { title })
     return { title }
   },
-  data () {
-    return {
-      current: 1,
-      target: 10,
-      levels,
-      textbookId: 3,
-      textbooks,
-      bonus: true
-    }
-  },
   head () {
     return {
       title: this.title
+    }
+  },
+  data () {
+    return {
+      levels,
+      textbooks,
+      current: 1,
+      target: 10,
+      textbookId: 3,
+      bonus: true
     }
   },
   computed: {

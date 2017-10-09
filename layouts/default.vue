@@ -2,9 +2,9 @@
   <div>
     <mdc-temporary-drawer header="Azurlane tools" :open="open" @requestChange="requestChange">
       <template slot>
-        <mdc-list-item tag="nuxt-link" to="/skill-exp-calc" class="mdc-temporary-drawer--selected">
+        <mdc-list-item tag="nuxt-link" :to="menu.path" :key="menu.path" :class="menuClass(menu)" v-for="menu in menus">
           <mdc-icon icon="star" class="mdc-list-item__start-detail" aria-hidden="true"/>
-          Skill EXP calculator
+          {{ menu.title }}
         </mdc-list-item>
         <mdc-list-divider/>
         <mdc-list-item tag="a" href="https://github.com/fiahfy/azurlane-tools" target="_blank">
@@ -14,7 +14,7 @@
         </mdc-list-item>
       </template>
     </mdc-temporary-drawer>
-    <mdc-toolbar :title="title" fixed @menuClick="menuClick">
+    <mdc-toolbar :title="title" fixed @menuClick="menuIconClick">
       <nuxt/>
     </mdc-toolbar>
   </div>
@@ -40,14 +40,23 @@ export default {
   },
   data () {
     return {
-      open: false
+      open: false,
+      menus: [
+        { name: 'ship-exp-calc', path: '/ship-exp-calc', title: 'Ship EXP calculator' },
+        { name: 'skill-exp-calc', path: '/skill-exp-calc', title: 'Skill EXP calculator' }
+      ]
     }
   },
   computed: mapState([
     'title'
   ]),
   methods: {
-    menuClick () {
+    menuClass (menu) {
+      return {
+        'mdc-temporary-drawer--selected': menu.name === this.$route.name
+      }
+    },
+    menuIconClick () {
       this.open = !this.open
     },
     requestChange (open) {
