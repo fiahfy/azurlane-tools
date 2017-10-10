@@ -3,10 +3,8 @@
     <section>
       <mdc-typography tag="h2" type="title">Input</mdc-typography>
       <section>
+        <mdc-typography tag="h3" type="subheading1">Level</mdc-typography>
         <mdc-list dense>
-          <mdc-list-item>
-            <mdc-typography tag="h3" type="subheading1">Level</mdc-typography>
-          </mdc-list-item>
           <mdc-list-item>
             <mdc-select v-model="current">
               <mdc-list-item
@@ -37,10 +35,8 @@
         </mdc-list>
       </section>
       <section>
+        <mdc-typography tag="h3" type="subheading1">Bonus</mdc-typography>
         <mdc-list dense>
-          <mdc-list-item>
-            <mdc-typography tag="h3" type="subheading1">Bonus</mdc-typography>
-          </mdc-list-item>
           <mdc-list-item>
             <mdc-form-field align="end">
               <mdc-checkbox id="flagShip" v-model="flagShip"/>
@@ -129,14 +125,8 @@ export default {
 .container {
   display: inline-block;
   box-sizing: border-box;
-  padding: 0 16px;
+  padding: 0 15px;
   width: 100%;
-}
-.container>section {
-  padding: 15px 0;
-}
-.container>section>section {
-  padding: 15px 0;
 }
 .mdc-select+span {
   margin: 0 15px;
