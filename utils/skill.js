@@ -19,9 +19,9 @@ export const exps = [
 export const levels = exps.map((exps) => exps.level)
 
 export const textbooks = [
-  { id: 1, name: 'Tier 1', exp: 100, hour: 2 },
-  { id: 2, name: 'Tier 2', exp: 300, hour: 4 },
-  { id: 3, name: 'Tier 3', exp: 800, hour: 8 }
+  { id: 1, name: 'Tech 1', exp: 100, hour: 2 },
+  { id: 2, name: 'Tech 2', exp: 300, hour: 4 },
+  { id: 3, name: 'Tech 3', exp: 800, hour: 8 }
 ]
 
 export function getTextbook (id) {

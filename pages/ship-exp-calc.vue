@@ -64,7 +64,7 @@
       <mdc-list twoLine dense>
         <mdc-list-item>
           <span class="mdc-list-item__text">
-            Total EXP
+            Total exp
             <span class="mdc-list-item__text__secondary">{{ exp }}</span>
           </span>
         </mdc-list-item>
@@ -94,7 +94,7 @@ export default {
     MdcTypography
   },
   asyncData ({ store }) {
-    const title = 'Ship EXP calculator'
+    const title = 'Ship exp calculator'
     store.commit('setTitle', { title })
     return { title }
   },
