@@ -4,9 +4,9 @@
       <mdc-typography tag="h2" type="title">Input</mdc-typography>
       <section>
         <mdc-typography tag="h3" type="subheading1">Ship gun</mdc-typography>
-        <mdc-list dense>
-          <mdc-list-item>
-            sec / 1 times
+        <mdc-list>
+          <mdc-list-item class="baseline">
+            <mdc-textfield type="number"/><span>sec / 1 times</span>
           </mdc-list-item>
         </mdc-list>
       </section>
@@ -21,6 +21,7 @@ import MdcIcon from '~/components/MdcIcon'
 import MdcList from '~/components/MdcList'
 import MdcListItem from '~/components/MdcListItem'
 import MdcSelect from '~/components/MdcSelect'
+import MdcTextfield from '~/components/MdcTextfield'
 import MdcTypography from '~/components/MdcTypography'
 import { levels, getTotalExp } from '~/utils/ship'
 
@@ -32,6 +33,7 @@ export default {
     MdcList,
     MdcListItem,
     MdcSelect,
+    MdcTextfield,
     MdcTypography
   },
   asyncData ({ store }) {
@@ -63,13 +65,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  display: inline-block;
-  box-sizing: border-box;
-  padding: 0 15px;
-  width: 100%;
-}
-.mdc-select+span {
-  margin: 0 15px;
+.baseline {
+  align-items: baseline;
 }
 </style>

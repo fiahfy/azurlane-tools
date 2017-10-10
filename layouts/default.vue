@@ -96,4 +96,14 @@ html {
 body {
   margin: 0;
 }
+
+.container {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 15px;
+  width: 100%;
+}
+.mdc-select+span {
+  margin: 0 15px;
+}
 </style>
