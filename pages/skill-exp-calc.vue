@@ -2,71 +2,67 @@
   <section class="container">
     <section>
       <mdc-typography tag="h2" type="title">Input</mdc-typography>
-      <mdc-list twoLine dense>
-        <mdc-list-item>
-          <span class="mdc-list-item__text">
-            Current Level
-            <span class="mdc-list-item__text__secondary">
-              <mdc-select v-model="current">
-                <mdc-list-item
-                  role="option"
-                  tabindex="0"
-                  :aria-selected="l === current"
-                  :id="l"
-                  :key="l"
-                  v-for="l in levels"
-                >
-                  {{ l }}
-                </mdc-list-item>
-              </mdc-select>
-            </span>
-          </span>
-        </mdc-list-item>
-        <mdc-list-item>
-          <span class="mdc-list-item__text">
-            Target Level
-            <span class="mdc-list-item__text__secondary">
-              <mdc-select v-model="target">
-                <mdc-list-item
-                  role="option"
-                  tabindex="0"
-                  :aria-selected="l === target"
-                  :id="l"
-                  :key="l"
-                  v-for="l in levels"
-                >
-                  {{ l }}
-                </mdc-list-item>
-              </mdc-select>
-            </span>
-          </span>
-        </mdc-list-item>
-        <mdc-list-item>
-          <span class="mdc-list-item__text">
-            Textbook
-            <span class="mdc-list-item__text__secondary">
-              <mdc-select v-model="textbookId">
-                <mdc-list-item
-                  role="option"
-                  tabindex="0"
-                  :aria-selected="t.id === textbookId"
-                  :id="t.id"
-                  :key="t.id"
-                  v-for="t in textbooks"
-                >
-                  {{ t.name }}
-                </mdc-list-item>
-              </mdc-select>
-            </span>
-          </span>
-        </mdc-list-item>
-        <mdc-list-item>
-          <mdc-form-field align="end">
-            <mdc-checkbox id="bonus" v-model="bonus"/>
-            <label for="bonus">Bonus <small>(150%)</small></label>
-          </mdc-form-field>
-        </mdc-list-item>
-      </mdc-list>
+      <section>
+        <mdc-list dense>
+          <mdc-list-item>
+            <mdc-typography tag="h3" type="subheading1">Level</mdc-typography>
+          </mdc-list-item>
+          <mdc-list-item>
+            <mdc-select v-model="current">
+              <mdc-list-item
+                role="option"
+                tabindex="0"
+                :aria-selected="l === current"
+                :id="l"
+                :key="l"
+                v-for="l in levels"
+              >
+                {{ l }}
+              </mdc-list-item>
+            </mdc-select>
+            <span>to</span>
+            <mdc-select v-model="target">
+              <mdc-list-item
+                role="option"
+                tabindex="0"
+                :aria-selected="l === target"
+                :id="l"
+                :key="l"
+                v-for="l in levels"
+              >
+                {{ l }}
+              </mdc-list-item>
+            </mdc-select>
+          </mdc-list-item>
+        </mdc-list>
+      </section>
+      <section>
+        <mdc-list dense>
+          <mdc-list-item>
+            <mdc-typography tag="h3" type="subheading1">Textbook</mdc-typography>
+          </mdc-list-item>
+          <mdc-list-item>
+            <mdc-select v-model="textbookId">
+                  <mdc-list-item
+                    role="option"
+                    tabindex="0"
+                    :aria-selected="t.id === textbookId"
+                    :id="t.id"
+                    :key="t.id"
+                    v-for="t in textbooks"
+                  >
+                    {{ t.name }}
+                  </mdc-list-item>
+                </mdc-select>
+          </mdc-list-item>
+          <mdc-list-item>
+            <mdc-form-field align="end">
+              <mdc-checkbox id="bonus" v-model="bonus"/>
+              <label for="bonus">Bonus <small>(150%)</small></label>
+            </mdc-form-field>
+          </mdc-list-item>
+        </mdc-list>
+      </section>
     </section>
 
     <section>
@@ -113,7 +109,7 @@ import MdcList from '~/components/MdcList'
 import MdcListItem from '~/components/MdcListItem'
 import MdcSelect from '~/components/MdcSelect'
 import MdcTypography from '~/components/MdcTypography'
-import { levels, textbooks, getExp, getTextbook } from '~/utils/skill'
+import { levels, textbooks, getTotalExp, getTextbook } from '~/utils/skill'
 
 export default {
   components: {
@@ -147,7 +143,7 @@ export default {
   },
   computed: {
     exp () {
-      return getExp(this.current, this.target)
+      return getTotalExp(this.current, this.target)
     },
     textbook () {
       return getTextbook(this.textbookId) || {}
@@ -179,8 +175,13 @@ export default {
   padding: 0 16px;
   width: 100%;
 }
-.container>section:first-child .mdc-list-item__text__secondary {
-  top: -5px;
-  position: relative;
+.container>section {
+  padding: 15px 0;
+}
+.container>section>section {
+  padding: 15px 0;
+}
+.mdc-select+span {
+  margin: 0 15px;
 }
 </style>
