@@ -14,8 +14,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', sizes: '192x192', href: publicPath + 'favicon.png' },
-      { rel: 'apple-touch-icon', sizes: '180x180', href: publicPath + 'apple-touch-icon.png' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500' }
+      { rel: 'apple-touch-icon', sizes: '180x180', href: publicPath + 'apple-touch-icon.png' }
     ]
   },
   /*

@@ -4,8 +4,8 @@
     :class="classes"
   >
     <input
-      type="number"
       class="mdc-textfield__input"
+      :type="type"
       :id="id"
       :placeholder="placeholder"
       :aria-label="placeholder"
@@ -32,6 +32,10 @@ export default {
   props: {
     value: {
       type: [String, Number]
+    },
+    type: {
+      type: String,
+      input: 'text'
     },
     label: {
       type: String

@@ -2,71 +2,64 @@
   <section class="container">
     <section>
       <mdc-typography tag="h2" type="title">Input</mdc-typography>
-      <mdc-list twoLine dense>
-        <mdc-list-item>
-          <span class="mdc-list-item__text">
-            Current Level
-            <span class="mdc-list-item__text__secondary">
-              <mdc-select v-model="current">
-                <mdc-list-item
-                  role="option"
-                  tabindex="0"
-                  :aria-selected="l === current"
-                  :id="l"
-                  :key="l"
-                  v-for="l in levels"
-                >
-                  {{ l }}
-                </mdc-list-item>
-              </mdc-select>
-            </span>
-          </span>
-        </mdc-list-item>
-        <mdc-list-item>
-          <span class="mdc-list-item__text">
-            Target Level
-            <span class="mdc-list-item__text__secondary">
-              <mdc-select v-model="target">
-                <mdc-list-item
-                  role="option"
-                  tabindex="0"
-                  :aria-selected="l === target"
-                  :id="l"
-                  :key="l"
-                  v-for="l in levels"
-                >
-                  {{ l }}
-                </mdc-list-item>
-              </mdc-select>
-            </span>
-          </span>
-        </mdc-list-item>
-        <mdc-list-item>
-          <span class="mdc-list-item__text">
-            Textbook
-            <span class="mdc-list-item__text__secondary">
-              <mdc-select v-model="textbookId">
-                <mdc-list-item
-                  role="option"
-                  tabindex="0"
-                  :aria-selected="t.id === textbookId"
-                  :id="t.id"
-                  :key="t.id"
-                  v-for="t in textbooks"
-                >
-                  {{ t.name }}
-                </mdc-list-item>
-              </mdc-select>
-            </span>
-          </span>
-        </mdc-list-item>
-        <mdc-list-item>
-          <mdc-form-field align="end">
-            <mdc-checkbox id="bonus" v-model="bonus"/>
-            <label for="bonus">Bonus<small>(150%)</small></label>
-          </mdc-form-field>
-        </mdc-list-item>
-      </mdc-list>
+      <section>
+        <mdc-list dense>
+          <mdc-list-item>
+            <mdc-typography tag="h3" type="subheading1">LEVEL</mdc-typography>
+          </mdc-list-item>
+          <mdc-list-item>
+            <mdc-select v-model="current">
+              <mdc-list-item
+                role="option"
+                tabindex="0"
+                :aria-selected="l === current"
+                :id="l"
+                :key="l"
+                v-for="l in levels"
+              >
+                {{ l }}
+              </mdc-list-item>
+            </mdc-select>
+            <span>から</span>
+            <mdc-select v-model="target">
+              <mdc-list-item
+                role="option"
+                tabindex="0"
+                :aria-selected="l === target"
+                :id="l"
+                :key="l"
+                v-for="l in levels"
+              >
+                {{ l }}
+              </mdc-list-item>
+            </mdc-select>
+            <span>まで</span>
+          </mdc-list-item>
+          <mdc-list-item>
+            <mdc-typography tag="h3" type="subheading1">教科書</mdc-typography>
+          </mdc-list-item>
+          <mdc-list-item>
+            <mdc-select v-model="textbookId">
+                  <mdc-list-item
+                    role="option"
+                    tabindex="0"
+                    :aria-selected="t.id === textbookId"
+                    :id="t.id"
+                    :key="t.id"
+                    v-for="t in textbooks"
+                  >
+                    {{ t.name }}
+                  </mdc-list-item>
+                </mdc-select>
+          </mdc-list-item>
+          <mdc-list-item>
+            <mdc-form-field align="end">
+              <mdc-checkbox id="bonus" v-model="bonus"/>
+              <label for="bonus">同タイプボーナス <small>(150%)</small></label>
+            </mdc-form-field>
+          </mdc-list-item>
+        </mdc-list>
+      </section>
     </section>
 
     <section>
@@ -74,19 +67,19 @@
       <mdc-list twoLine dense>
         <mdc-list-item>
           <span class="mdc-list-item__text">
-            Total EXP
+            総経験値
             <span class="mdc-list-item__text__secondary">{{ exp }}</span>
           </span>
         </mdc-list-item>
         <mdc-list-item>
           <span class="mdc-list-item__text">
-            Total textbooks
+            教科書の必要数
             <span class="mdc-list-item__text__secondary">{{ number }}</span>
           </span>
         </mdc-list-item>
         <mdc-list-item>
           <span class="mdc-list-item__text">
-            Total time
+            必要時間
             <span class="mdc-list-item__text__secondary">{{ time }}</span>
           </span>
         </mdc-list-item>
@@ -113,25 +106,7 @@ import MdcList from '~/components/MdcList'
 import MdcListItem from '~/components/MdcListItem'
 import MdcSelect from '~/components/MdcSelect'
 import MdcTypography from '~/components/MdcTypography'
-
-const levels = Array.from(Array(10).keys()).map(i => i + 1)
-const textbooks = [
-  { id: 1, name: 'Tier 1', exp: 100, hour: 2 },
-  { id: 2, name: 'Tier 2', exp: 300, hour: 4 },
-  { id: 3, name: 'Tier 3', exp: 800, hour: 8 }
-]
-const exps = {
-  1: 0,
-  2: 100,
-  3: 200,
-  4: 400,
-  5: 800,
-  6: 1400,
-  7: 2200,
-  8: 3200,
-  9: 4400,
-  10: 5800
-}
+import { levels, textbooks, getTotalExp, getTextbook } from '~/utils/skill'
 
 export default {
   components: {
@@ -144,36 +119,31 @@ export default {
     MdcTypography
   },
   asyncData ({ store }) {
-    const title = 'Skill EXP calculator'
+    const title = 'スキル経験値計算'
     store.commit('setTitle', { title })
     return { title }
-  },
-  data () {
-    return {
-      current: 1,
-      target: 10,
-      levels,
-      textbookId: 3,
-      textbooks,
-      bonus: true
-    }
   },
   head () {
     return {
       title: this.title
     }
   },
+  data () {
+    return {
+      levels,
+      textbooks,
+      current: 1,
+      target: 10,
+      textbookId: 3,
+      bonus: true
+    }
+  },
   computed: {
     exp () {
-      return levels.reduce((p, c) => {
-        if (c > this.current && c <= this.target) {
-          return p + exps[c]
-        }
-        return p
-      }, 0)
+      return getTotalExp(this.current, this.target)
     },
     textbook () {
-      return textbooks.find((textbook) => textbook.id === this.textbookId) || {}
+      return getTextbook(this.textbookId) || {}
     },
     number () {
       let exp = this.textbook.exp
@@ -187,23 +157,16 @@ export default {
       hours = hours % 24
       let result = ''
       if (days) {
-        result = days + 'd '
+        result = days + '日 '
       }
-      return result + hours + 'h'
+      return result + hours + '時間'
     }
   }
 }
 </script>
 
 <style scoped>
-.container {
-  display: inline-block;
-  box-sizing: border-box;
-  padding: 0 16px;
-  width: 100%;
-}
-.container>section:first-child .mdc-list-item__text__secondary {
-  top: -5px;
-  position: relative;
+.mdc-list-item .mdc-typography {
+  margin-bottom: 0;
 }
 </style>
