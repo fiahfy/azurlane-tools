@@ -42,9 +42,9 @@ export default {
     return {
       open: false,
       menus: [
-        { name: 'rof-calc', path: '/rof-calc', title: 'Rof calculator' },
-        { name: 'ship-exp-calc', path: '/ship-exp-calc', title: 'Ship exp calculator' },
-        { name: 'skill-exp-calc', path: '/skill-exp-calc', title: 'Skill exp calculator' }
+        { name: 'rof-calc', path: '/rof-calc', title: '攻撃速度計算' },
+        // { name: 'ship-exp-calc', path: '/ship-exp-calc', title: 'Ship exp calculator' },
+        { name: 'skill-exp-calc', path: '/skill-exp-calc', title: 'スキル経験値計算' }
       ]
     }
   },

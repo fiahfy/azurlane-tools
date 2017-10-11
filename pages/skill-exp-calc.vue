@@ -3,8 +3,10 @@
     <section>
       <mdc-typography tag="h2" type="title">Input</mdc-typography>
       <section>
-        <mdc-typography tag="h3" type="subheading1">Level</mdc-typography>
         <mdc-list dense>
+          <mdc-list-item>
+            <mdc-typography tag="h3" type="subheading1">LEVEL</mdc-typography>
+          </mdc-list-item>
           <mdc-list-item>
             <mdc-select v-model="current">
               <mdc-list-item
@@ -18,7 +20,7 @@
                 {{ l }}
               </mdc-list-item>
             </mdc-select>
-            <span>to</span>
+            <span>から</span>
             <mdc-select v-model="target">
               <mdc-list-item
                 role="option"
@@ -31,12 +33,11 @@
                 {{ l }}
               </mdc-list-item>
             </mdc-select>
+            <span>まで</span>
           </mdc-list-item>
-        </mdc-list>
-      </section>
-      <section>
-        <mdc-typography tag="h3" type="subheading1">Textbook</mdc-typography>
-        <mdc-list dense>
+          <mdc-list-item>
+            <mdc-typography tag="h3" type="subheading1">教科書</mdc-typography>
+          </mdc-list-item>
           <mdc-list-item>
             <mdc-select v-model="textbookId">
                   <mdc-list-item
@@ -54,7 +55,7 @@
           <mdc-list-item>
             <mdc-form-field align="end">
               <mdc-checkbox id="bonus" v-model="bonus"/>
-              <label for="bonus">Bonus <small>(150%)</small></label>
+              <label for="bonus">同タイプボーナス <small>(150%)</small></label>
             </mdc-form-field>
           </mdc-list-item>
         </mdc-list>
@@ -66,19 +67,19 @@
       <mdc-list twoLine dense>
         <mdc-list-item>
           <span class="mdc-list-item__text">
-            Total exp
+            総経験値
             <span class="mdc-list-item__text__secondary">{{ exp }}</span>
           </span>
         </mdc-list-item>
         <mdc-list-item>
           <span class="mdc-list-item__text">
-            Total textbooks
+            教科書の必要数
             <span class="mdc-list-item__text__secondary">{{ number }}</span>
           </span>
         </mdc-list-item>
         <mdc-list-item>
           <span class="mdc-list-item__text">
-            Total time
+            必要時間
             <span class="mdc-list-item__text__secondary">{{ time }}</span>
           </span>
         </mdc-list-item>
@@ -118,7 +119,7 @@ export default {
     MdcTypography
   },
   asyncData ({ store }) {
-    const title = 'Skill exp calculator'
+    const title = 'スキル経験値計算'
     store.commit('setTitle', { title })
     return { title }
   },
@@ -156,10 +157,16 @@ export default {
       hours = hours % 24
       let result = ''
       if (days) {
-        result = days + 'd '
+        result = days + '日 '
       }
-      return result + hours + 'h'
+      return result + hours + '時間'
     }
   }
 }
 </script>
+
+<style scoped>
+.mdc-list-item .mdc-typography {
+  margin-bottom: 0;
+}
+</style>

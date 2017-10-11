@@ -33,5 +33,6 @@ export function getExp (level) {
 }
 
 export function getTotalExp (from, to) {
-  return getExp(to).total - getExp(from).total
+  const result = getExp(to).total - getExp(from).total
+  return result > 0 ? result : 0
 }
