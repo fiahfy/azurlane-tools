@@ -82,5 +82,9 @@ input {
   /* Fix border for mobile */
   border-radius: 0;
 }
+.mdc-textfield__input {
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  padding-bottom: 7px;
+}
 </style>
 

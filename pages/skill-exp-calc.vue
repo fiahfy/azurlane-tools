@@ -2,64 +2,54 @@
   <section class="container">
     <section>
       <mdc-typography tag="h2" type="title">Input</mdc-typography>
-      <section>
-        <mdc-list dense>
-          <mdc-list-item>
-            <mdc-typography tag="h3" type="subheading1">LEVEL</mdc-typography>
+      <div>
+        <mdc-select v-model="current" label="LEVEL">
+          <mdc-list-item
+            role="option"
+            tabindex="0"
+            :aria-selected="l === current"
+            :id="l"
+            :key="l"
+            v-for="l in levels"
+          >
+            {{ l }}
           </mdc-list-item>
-          <mdc-list-item>
-            <mdc-select v-model="current">
-              <mdc-list-item
-                role="option"
-                tabindex="0"
-                :aria-selected="l === current"
-                :id="l"
-                :key="l"
-                v-for="l in levels"
-              >
-                {{ l }}
-              </mdc-list-item>
-            </mdc-select>
-            <span>から</span>
-            <mdc-select v-model="target">
-              <mdc-list-item
-                role="option"
-                tabindex="0"
-                :aria-selected="l === target"
-                :id="l"
-                :key="l"
-                v-for="l in levels"
-              >
-                {{ l }}
-              </mdc-list-item>
-            </mdc-select>
-            <span>まで</span>
+        </mdc-select>
+        <small>から</small>
+        <mdc-select v-model="target">
+          <mdc-list-item
+            role="option"
+            tabindex="0"
+            :aria-selected="l === target"
+            :id="l"
+            :key="l"
+            v-for="l in levels"
+          >
+            {{ l }}
           </mdc-list-item>
-          <mdc-list-item>
-            <mdc-typography tag="h3" type="subheading1">教科書</mdc-typography>
+        </mdc-select>
+        <small>まで</small>
+      </div>
+      <div>
+        <mdc-select v-model="textbookId" label="教科書">
+          <mdc-list-item
+            role="option"
+            tabindex="0"
+            :aria-selected="t.id === textbookId"
+            :id="t.id"
+            :key="t.id"
+            v-for="t in textbooks"
+          >
+            {{ t.name }}
           </mdc-list-item>
-          <mdc-list-item>
-            <mdc-select v-model="textbookId">
-                  <mdc-list-item
-                    role="option"
-                    tabindex="0"
-                    :aria-selected="t.id === textbookId"
-                    :id="t.id"
-                    :key="t.id"
-                    v-for="t in textbooks"
-                  >
-                    {{ t.name }}
-                  </mdc-list-item>
-                </mdc-select>
-          </mdc-list-item>
-          <mdc-list-item>
-            <mdc-form-field align="end">
-              <mdc-checkbox id="bonus" v-model="bonus"/>
-              <label for="bonus">同タイプボーナス <small>(150%)</small></label>
-            </mdc-form-field>
-          </mdc-list-item>
-        </mdc-list>
-      </section>
+        </mdc-select>
+      </div>
+      <div>
+        <mdc-form-field align="end">
+          <mdc-checkbox id="bonus" v-model="bonus"/>
+          <label for="bonus">同タイプボーナス<small>(150%)</small></label>
+        </mdc-form-field>
+      </div>
     </section>
 
     <section>
@@ -166,7 +156,10 @@ export default {
 </script>
 
 <style scoped>
-.mdc-list-item .mdc-typography {
-  margin-bottom: 0;
+small {
+  margin: 0 15px;
+}
+.mdc-form-field small {
+  margin: 0 0 0 5px;
 }
 </style>
