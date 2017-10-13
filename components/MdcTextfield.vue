@@ -6,6 +6,7 @@
     <input
       class="mdc-textfield__input"
       :type="type"
+      :step="step"
       :id="id"
       :placeholder="placeholder"
       :aria-label="placeholder"
@@ -36,6 +37,10 @@ export default {
     type: {
       type: String,
       input: 'text'
+    },
+    step: {
+      type: String,
+      input: ''
     },
     label: {
       type: String
@@ -78,9 +83,10 @@ export default {
 </script>
 
 <style scoped>
-input {
+.mdc-textfield__input {
   /* Fix border for mobile */
   border-radius: 0;
+  margin: 0;
 }
 .mdc-textfield__input {
   border-bottom: 1px solid rgba(0,0,0,.12);
@@ -88,6 +94,7 @@ input {
 }
 .mdc-textfield__label {
   font-family: Roboto,sans-serif;
+  height: 19px;
   white-space: nowrap;
 }
 </style>

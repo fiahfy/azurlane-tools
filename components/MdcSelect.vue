@@ -40,8 +40,8 @@ export default {
 
 <style scoped>
 .mdc-select {
-  margin-top: 31px;
-  margin-bottom: 8px;
+  margin: 16px 0 8px;
+  padding-top: 15px;
   position: relative;
 }
 label {
@@ -49,6 +49,7 @@ label {
   color: rgba(0,0,0,.5);
   cursor: auto;
   font-size: medium;
+  height: 19px;
   left: 0;
   letter-spacing: initial;
   line-height: initial;

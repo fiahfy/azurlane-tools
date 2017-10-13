@@ -156,6 +156,9 @@ export default {
 </script>
 
 <style scoped>
+.mdc-typography {
+  margin-bottom: 0;
+}
 small {
   margin: 0 15px;
 }

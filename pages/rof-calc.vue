@@ -3,13 +3,13 @@
     <section>
       <mdc-typography tag="h2" type="title">Input</mdc-typography>
       <div>
-        <mdc-textfield type="text" label="艦砲の攻撃速度" v-model="interval"/><small>s/回</small>
+        <mdc-textfield type="number" step="0.01" label="艦砲の攻撃速度" v-model="interval"/><small>s/回</small>
       </div>
       <div>
         <mdc-textfield type="number" label="艦の装填値" v-model="load"/>
       </div>
       <div>
-        <mdc-textfield type="number" label="スキルの装填上昇値(合算)" v-model="bonus"/>
+        <mdc-textfield type="number" label="スキルの装填上昇値" v-model="bonus"/><small>%</small>
       </div>
     </section>
 
@@ -68,9 +68,9 @@ export default {
   },
   data () {
     return {
-      interval: 0.76,
-      load: 201,
-      bonus: 25
+      interval: '',
+      load: '',
+      bonus: ''
     }
   },
   computed: {
@@ -83,6 +83,9 @@ export default {
 </script>
 
 <style scoped>
+.mdc-typography {
+  margin-bottom: 0;
+}
 .mdc-list-item__text__secondary small {
   margin: 0 0 0 5px;
 }
