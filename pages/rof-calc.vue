@@ -3,13 +3,33 @@
     <section>
       <mdc-typography tag="h2" type="title">Input</mdc-typography>
       <div>
-        <mdc-textfield type="number" step="0.01" label="艦砲の攻撃速度" v-model="interval"/><small>s/回</small>
+        <mdc-textfield
+          type="number"
+          step="0.01"
+          label="艦砲の攻撃速度"
+          helptext="e.g. 76mm砲T3 (0.76s/回)"
+          v-model="interval"
+        >
+          <small>s/回</small>
+        </mdc-textfield>
       </div>
       <div>
-        <mdc-textfield type="number" label="艦の装填値" v-model="load"/>
+        <mdc-textfield
+          type="number"
+          label="艦の装填値"
+          helptext="e.g. エルドリッジ (201)"
+          v-model="load"
+        />
       </div>
       <div>
-        <mdc-textfield type="number" label="スキルの装填上昇値" v-model="bonus"/><small>%</small>
+        <mdc-textfield
+          type="number"
+          label="スキルの装填上昇値"
+          helptext="e.g. 装填指令 (25%)"
+          v-model="bonus"
+        >
+          <small>%</small>
+        </mdc-textfield>
       </div>
     </section>
 

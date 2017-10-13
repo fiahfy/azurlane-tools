@@ -1,28 +1,34 @@
 <template>
-  <div
-    class="mdc-textfield"
-    :class="classes"
-  >
-    <input
-      class="mdc-textfield__input"
-      :type="type"
-      :step="step"
-      :id="id"
-      :placeholder="placeholder"
-      :aria-label="placeholder"
-      :value="value"
-      @input="updateValue"
-      @keyup="keyup"
-    />
-    <label
-      class="mdc-textfield__label"
-      :for="id"
-      v-if="!fullwidth"
-    >{{ label }}</label>
+  <div>
     <div
-      class="mdc-textfield__bottom-line"
-      v-if="!fullwidth"
-    />
+      class="mdc-textfield"
+      :class="classes"
+    >
+      <input
+        class="mdc-textfield__input"
+        :type="type"
+        :step="step"
+        :id="id"
+        :placeholder="placeholder"
+        :aria-label="placeholder"
+        :value="value"
+        @input="updateValue"
+        @keyup="keyup"
+      />
+      <label
+        class="mdc-textfield__label"
+        :for="id"
+        v-if="!fullwidth"
+      >{{ label }}</label>
+      <div
+        class="mdc-textfield__bottom-line"
+        v-if="!fullwidth"
+      />
+    </div>
+    <slot/>
+    <p v-if="helptext" class="mdc-textfield-helptext mdc-textfield-helptext--persistent">
+      {{ helptext }}
+    </p>
   </div>
 </template>
 
@@ -45,6 +51,9 @@ export default {
     label: {
       type: String
     },
+    helptext: {
+      type: String
+    },
     fullwidth: {
       type: Boolean,
       default: false
@@ -57,7 +66,7 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      MDCTextfield.attachTo(this.$el)
+      MDCTextfield.attachTo(this.$el.querySelector('.mdc-textfield'))
     })
     this.id = this._uid // eslint-disable-line no-underscore-dangle
   },
