@@ -43,7 +43,6 @@ import MdcFormField from '~/components/MdcFormField'
 import MdcIcon from '~/components/MdcIcon'
 import MdcList from '~/components/MdcList'
 import MdcListItem from '~/components/MdcListItem'
-import MdcSelect from '~/components/MdcSelect'
 import MdcTextfield from '~/components/MdcTextfield'
 import MdcTypography from '~/components/MdcTypography'
 
@@ -54,7 +53,6 @@ export default {
     MdcIcon,
     MdcList,
     MdcListItem,
-    MdcSelect,
     MdcTextfield,
     MdcTypography
   },
