@@ -87,6 +87,7 @@ input {
   padding-bottom: 7px;
 }
 .mdc-textfield__label {
+  font-family: Roboto,sans-serif;
   white-space: nowrap;
 }
 </style>

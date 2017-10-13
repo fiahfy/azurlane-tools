@@ -48,7 +48,6 @@ label {
   bottom: 7px;
   color: rgba(0,0,0,.5);
   cursor: auto;
-  font-family: initial;
   font-size: medium;
   left: 0;
   letter-spacing: initial;
