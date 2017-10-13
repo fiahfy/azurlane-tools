@@ -49,7 +49,7 @@
       <mdc-typography tag="h2" type="title">Reference</mdc-typography>
       <mdc-list dense>
         <mdc-list-item tag="a" href="http://azurlane.wikiru.jp/index.php?%A4%E8%A4%AF%A4%A2%A4%EB%BC%C1%CC%E4#t00cea35" target="_blank">
-          よくある質問 - アズールレーン(アズレン)攻略 Wiki
+          アズールレーン(アズレン)攻略 Wiki
           <mdc-icon icon="open_in_new" class="mdc-list-item__end-detail" aria-hidden="true"/>
         </mdc-list-item>
       </mdc-list>

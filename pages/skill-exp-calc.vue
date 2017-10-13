@@ -80,7 +80,7 @@
       <mdc-typography tag="h2" type="title">Reference</mdc-typography>
       <mdc-list dense>
         <mdc-list-item tag="a" href="http://azurlane.wikiru.jp/index.php?%B3%D8%B1%E0#p707f95f" target="_blank">
-          学園 - アズールレーン(アズレン)攻略 Wiki
+          アズールレーン(アズレン)攻略 Wiki
           <mdc-icon icon="open_in_new" class="mdc-list-item__end-detail" aria-hidden="true"/>
         </mdc-list-item>
       </mdc-list>
