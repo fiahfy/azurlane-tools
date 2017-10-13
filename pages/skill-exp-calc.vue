@@ -3,7 +3,7 @@
     <section>
       <mdc-typography tag="h2" type="title">Input</mdc-typography>
       <div>
-        <mdc-select v-model="current" label="LEVEL">
+        <mdc-select label="LEVEL" v-model="current">
           <mdc-list-item
             role="option"
             tabindex="0"
@@ -31,7 +31,7 @@
         <small>まで</small>
       </div>
       <div>
-        <mdc-select v-model="textbookId" label="教科書">
+        <mdc-select label="教科書" v-model="textbookId">
           <mdc-list-item
             role="option"
             tabindex="0"

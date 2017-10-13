@@ -2,37 +2,15 @@
   <section class="container">
     <section>
       <mdc-typography tag="h2" type="title">Input</mdc-typography>
-      <section>
-        <mdc-list dense>
-          <mdc-list-item>
-            <mdc-typography tag="h3" type="subheading1">艦砲 - 攻撃速度</mdc-typography>
-          </mdc-list-item>
-          <mdc-list-item class="wrapper">
-            <mdc-textfield type="number" v-model="interval"/><small>s/回</small>
-          </mdc-list-item>
-          <mdc-list-item class="wrapper">
-            <small>例) 76mm砲T3 (=0.76s/回)</small>
-          </mdc-list-item>
-          <mdc-list-item>
-            <mdc-typography tag="h3" type="subheading1">艦 - 装填値</mdc-typography>
-          </mdc-list-item>
-          <mdc-list-item class="wrapper">
-            <mdc-textfield type="number" v-model="load"/>
-          </mdc-list-item>
-          <mdc-list-item class="wrapper">
-            <small>例) エルドリッジ (=201)</small>
-          </mdc-list-item>
-          <mdc-list-item>
-            <mdc-typography tag="h3" type="subheading1">スキル - 装填上昇値(合算)</mdc-typography>
-          </mdc-list-item>
-          <mdc-list-item class="wrapper">
-            <mdc-textfield type="number" v-model="bonus"/><small>%</small>
-          </mdc-list-item>
-          <mdc-list-item class="wrapper">
-            <small>例) 装填指令 (=25%)</small>
-          </mdc-list-item>
-        </mdc-list>
-      </section>
+      <div>
+        <mdc-textfield type="text" label="艦砲の攻撃速度" v-model="interval"/><small>s/回</small>
+      </div>
+      <div>
+        <mdc-textfield type="number" label="艦の装填値" v-model="load"/>
+      </div>
+      <div>
+        <mdc-textfield type="number" label="スキルの装填上昇値(合算)" v-model="bonus"/>
+      </div>
     </section>
 
     <section>
@@ -41,7 +19,7 @@
         <mdc-list-item>
           <span class="mdc-list-item__text">
             実際の攻撃速度
-            <span class="mdc-list-item__text__secondary">{{ calculated }}<small> s/回</small></span>
+            <span class="mdc-list-item__text__secondary">{{ calculated }}<small>s/回</small></span>
           </span>
         </mdc-list-item>
       </mdc-list>
@@ -106,16 +84,8 @@ export default {
 }
 </script>
 
-
 <style scoped>
-.mdc-list-item .mdc-typography {
-  margin-bottom: 0;
-}
-.mdc-list-item>.mdc-textfield {
-  height: 40px!important;
-  margin: 0;
-}
-.wrapper {
-  align-items: baseline;
+.mdc-list-item__text__secondary small {
+  margin: 0 0 0 5px;
 }
 </style>

@@ -21,7 +21,7 @@
     <div
       class="mdc-textfield__bottom-line"
       v-if="!fullwidth"
-    ></div>
+    />
   </div>
 </template>
 
@@ -85,6 +85,9 @@ input {
 .mdc-textfield__input {
   border-bottom: 1px solid rgba(0,0,0,.12);
   padding-bottom: 7px;
+}
+.mdc-textfield__label {
+  white-space: nowrap;
 }
 </style>
 
