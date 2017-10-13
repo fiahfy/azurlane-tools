@@ -2,37 +2,35 @@
   <section class="container">
     <section>
       <mdc-typography tag="h2" type="title">Input</mdc-typography>
-      <section>
-        <mdc-list dense>
-          <mdc-list-item>
-            <mdc-typography tag="h3" type="subheading1">艦砲 - 攻撃速度</mdc-typography>
-          </mdc-list-item>
-          <mdc-list-item class="wrapper">
-            <mdc-textfield type="number" v-model="interval"/><small>s/回</small>
-          </mdc-list-item>
-          <mdc-list-item class="wrapper">
-            <small>例) 76mm砲T3 (=0.76s/回)</small>
-          </mdc-list-item>
-          <mdc-list-item>
-            <mdc-typography tag="h3" type="subheading1">艦 - 装填値</mdc-typography>
-          </mdc-list-item>
-          <mdc-list-item class="wrapper">
-            <mdc-textfield type="number" v-model="load"/>
-          </mdc-list-item>
-          <mdc-list-item class="wrapper">
-            <small>例) エルドリッジ (=201)</small>
-          </mdc-list-item>
-          <mdc-list-item>
-            <mdc-typography tag="h3" type="subheading1">スキル - 装填上昇値(合算)</mdc-typography>
-          </mdc-list-item>
-          <mdc-list-item class="wrapper">
-            <mdc-textfield type="number" v-model="bonus"/><small>%</small>
-          </mdc-list-item>
-          <mdc-list-item class="wrapper">
-            <small>例) 装填指令 (=25%)</small>
-          </mdc-list-item>
-        </mdc-list>
-      </section>
+      <div>
+        <mdc-textfield
+          type="number"
+          step="0.01"
+          label="艦砲の攻撃速度"
+          helptext="e.g. 76mm砲T3 (0.76s/回)"
+          v-model="interval"
+        >
+          <small>s/回</small>
+        </mdc-textfield>
+      </div>
+      <div>
+        <mdc-textfield
+          type="number"
+          label="艦の装填値"
+          helptext="e.g. エルドリッジ (201)"
+          v-model="load"
+        />
+      </div>
+      <div>
+        <mdc-textfield
+          type="number"
+          label="スキルの装填上昇値"
+          helptext="e.g. 装填指令 (25%)"
+          v-model="bonus"
+        >
+          <small>%</small>
+        </mdc-textfield>
+      </div>
     </section>
 
     <section>
@@ -41,7 +39,7 @@
         <mdc-list-item>
           <span class="mdc-list-item__text">
             実際の攻撃速度
-            <span class="mdc-list-item__text__secondary">{{ calculated }}<small> s/回</small></span>
+            <span class="mdc-list-item__text__secondary">{{ calculated }}<small>s/回</small></span>
           </span>
         </mdc-list-item>
       </mdc-list>
@@ -65,7 +63,6 @@ import MdcFormField from '~/components/MdcFormField'
 import MdcIcon from '~/components/MdcIcon'
 import MdcList from '~/components/MdcList'
 import MdcListItem from '~/components/MdcListItem'
-import MdcSelect from '~/components/MdcSelect'
 import MdcTextfield from '~/components/MdcTextfield'
 import MdcTypography from '~/components/MdcTypography'
 
@@ -76,7 +73,6 @@ export default {
     MdcIcon,
     MdcList,
     MdcListItem,
-    MdcSelect,
     MdcTextfield,
     MdcTypography
   },
@@ -92,9 +88,9 @@ export default {
   },
   data () {
     return {
-      interval: 0.76,
-      load: 201,
-      bonus: 25
+      interval: '',
+      load: '',
+      bonus: ''
     }
   },
   computed: {
@@ -106,16 +102,11 @@ export default {
 }
 </script>
 
-
 <style scoped>
-.mdc-list-item .mdc-typography {
+.mdc-typography {
   margin-bottom: 0;
 }
-.mdc-list-item>.mdc-textfield {
-  height: 40px!important;
-  margin: 0;
-}
-.wrapper {
-  align-items: baseline;
+.mdc-list-item__text__secondary small {
+  margin: 0 0 0 5px;
 }
 </style>

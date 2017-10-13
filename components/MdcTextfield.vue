@@ -1,27 +1,34 @@
 <template>
-  <div
-    class="mdc-textfield"
-    :class="classes"
-  >
-    <input
-      class="mdc-textfield__input"
-      :type="type"
-      :id="id"
-      :placeholder="placeholder"
-      :aria-label="placeholder"
-      :value="value"
-      @input="updateValue"
-      @keyup="keyup"
-    />
-    <label
-      class="mdc-textfield__label"
-      :for="id"
-      v-if="!fullwidth"
-    >{{ label }}</label>
+  <div>
     <div
-      class="mdc-textfield__bottom-line"
-      v-if="!fullwidth"
-    ></div>
+      class="mdc-textfield"
+      :class="classes"
+    >
+      <input
+        class="mdc-textfield__input"
+        :type="type"
+        :step="step"
+        :id="id"
+        :placeholder="placeholder"
+        :aria-label="placeholder"
+        :value="value"
+        @input="updateValue"
+        @keyup="keyup"
+      />
+      <label
+        class="mdc-textfield__label"
+        :for="id"
+        v-if="!fullwidth"
+      >{{ label }}</label>
+      <div
+        class="mdc-textfield__bottom-line"
+        v-if="!fullwidth"
+      />
+    </div>
+    <slot/>
+    <p v-if="helptext" class="mdc-textfield-helptext mdc-textfield-helptext--persistent">
+      {{ helptext }}
+    </p>
   </div>
 </template>
 
@@ -37,7 +44,14 @@ export default {
       type: String,
       input: 'text'
     },
+    step: {
+      type: String,
+      input: ''
+    },
     label: {
+      type: String
+    },
+    helptext: {
       type: String
     },
     fullwidth: {
@@ -52,7 +66,7 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      MDCTextfield.attachTo(this.$el)
+      MDCTextfield.attachTo(this.$el.querySelector('.mdc-textfield'))
     })
     this.id = this._uid // eslint-disable-line no-underscore-dangle
   },
@@ -78,9 +92,19 @@ export default {
 </script>
 
 <style scoped>
-input {
+.mdc-textfield__input {
   /* Fix border for mobile */
   border-radius: 0;
+  margin: 0;
+}
+.mdc-textfield__input {
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  padding-bottom: 7px;
+}
+.mdc-textfield__label {
+  font-family: Roboto,sans-serif;
+  height: 19px;
+  white-space: nowrap;
 }
 </style>
 
