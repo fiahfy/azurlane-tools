@@ -3,7 +3,7 @@
     <mdc-temporary-drawer header="Azurlane tools" :open="open" @requestChange="requestChange">
       <template slot>
         <mdc-list-item tag="nuxt-link" :to="menu.path" :key="menu.path" :class="menuClass(menu)" v-for="menu in menus">
-          <mdc-icon icon="star" class="mdc-list-item__start-detail" aria-hidden="true"/>
+          <mdc-icon :icon="menu.icon" class="mdc-list-item__start-detail" aria-hidden="true"/>
           {{ menu.title }}
         </mdc-list-item>
         <mdc-list-divider/>
@@ -17,15 +17,17 @@
     <mdc-toolbar :title="title" fixed @menuClick="menuIconClick">
       <nuxt/>
     </mdc-toolbar>
+    <mdc-snackbar :message="message" :open="!!message" @requestClose="requestClose"/>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 import GithubMark from '~/components/GithubMark'
 import MdcIcon from '~/components/MdcIcon'
 import MdcListDivider from '~/components/MdcListDivider'
 import MdcListItem from '~/components/MdcListItem'
+import MdcSnackbar from '~/components/MdcSnackbar'
 import MdcTemporaryDrawer from '~/components/MdcTemporaryDrawer'
 import MdcToolbar from '~/components/MdcToolbar'
 
@@ -35,6 +37,7 @@ export default {
     MdcIcon,
     MdcListDivider,
     MdcListItem,
+    MdcSnackbar,
     MdcTemporaryDrawer,
     MdcToolbar
   },
@@ -42,16 +45,20 @@ export default {
     return {
       open: false,
       menus: [
-        { name: 'rof-calc', path: '/rof-calc', title: '攻撃速度計算' },
+        { name: 'rof-calc', path: '/rof-calc', icon: 'star', title: '攻撃速度計算' },
         // { name: 'ship-exp-calc', path: '/ship-exp-calc', title: 'Ship exp calculator' },
-        { name: 'skill-exp-calc', path: '/skill-exp-calc', title: 'スキル経験値計算' }
+        { name: 'skill-exp-calc', path: '/skill-exp-calc', icon: 'star', title: 'スキル経験値計算' }
       ]
     }
   },
   computed: mapState([
-    'title'
+    'title',
+    'message'
   ]),
   methods: {
+    ...mapMutations([
+      'setMessage'
+    ]),
     menuClass (menu) {
       return {
         'mdc-temporary-drawer--selected': menu.name === this.$route.name
@@ -62,6 +69,9 @@ export default {
     },
     requestChange (open) {
       this.open = open
+    },
+    requestClose () {
+      this.setMessage('')
     }
   },
   watch: {
