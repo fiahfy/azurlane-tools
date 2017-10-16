@@ -24,7 +24,6 @@ export default {
 
 <style scoped>
 .container {
-  margin: 15px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
